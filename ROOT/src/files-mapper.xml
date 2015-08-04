@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.it.saan.board.model.FilesDao">
+	<insert id="createOne" parameterType="org.it.saan.board.model.FilesDto">
+		insert into files
+		values(files_seq.nextval, board_seq.currval, #{realFile }, #{tempFile}, 0 )
+	</insert>
+	<select id="readSome" parameterType="java.lang.String"
+		resultType="org.it.saan.board.model.FilesDto">
+		select * from files where num=#{num}
+	</select>
+	<select id="readOne" parameterType="java.lang.String"
+		resultType="org.it.saan.board.model.FilesDto">
+		select * from files where fnum=#{fnum}
+	</select>
+	<update id="updateCnt" parameterType="java.lang.String">
+		update files set cnt = cnt+1 where fnum=#{fnum }
+	</update>
+</mapper>

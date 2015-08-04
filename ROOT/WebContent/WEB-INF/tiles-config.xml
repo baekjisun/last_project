@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions	PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+"http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<!-- TilesViewResolver를 등록시킨 상태 / Controller 땅에서 돌려주는 String 값을 catch해서 해당 
+	view가 있다면 작동시킬 수 있는데 그때 사용되는 이름값들 설정을 해두는 곳 -->
+<tiles-definitions>
+	<definition name="base" template="/WEB-INF/view/layout/baseTemplate01.jsp">
+		<put-attribute name="login" value="/WEB-INF/view/log/login.jsp" />
+		<put-attribute name="nav" value="/WEB-INF/view/layout/nav.jsp" />
+		<put-attribute name="footer" value="/WEB-INF/view/layout/footer.jsp" />
+	</definition>
+	<definition name="base2" template="/WEB-INF/view/layout/baseTemplate02.jsp">
+		<put-attribute name="login" value="/WEB-INF/view/log/login.jsp" />
+		<put-attribute name="nav" value="/WEB-INF/view/layout/nav.jsp" />
+		<put-attribute name="footer" value="/WEB-INF/view/layout/footer.jsp" />
+	</definition>
+
+	<definition name="chk.tiles" template="/WEB-INF/view/member/registerCheck.jsp" />
+	<definition name="guestlist.tiles" template="/WEB-INF/view/guest/latest.jsp" />
+	<definition name="regSucc.tiles" template="/WEB-INF/view/layout/main.jsp" />
+	<definition name="alert.tiles" template="/WEB-INF/view/alert.jsp" />
+	<definition name="file.tiles" template="/WEB-INF/view/board/FileList.jsp" />
+
+	<definition name="main.tiles" extends="base">
+		<put-attribute name="guest" value="/WEB-INF/view/guest/list.jsp" />
+		<put-attribute name="reg" value="/WEB-INF/view/member/register.jsp" />
+	</definition>
+
+	<definition name="tiles:*/*" extends="base">
+		<put-attribute name="guest" value="/WEB-INF/view/guest/list.jsp" />
+		<put-attribute name="reg" value="/WEB-INF/view/{1}/{2}.jsp" />
+	</definition>
+	<definition name="tiles2:*/*" extends="base2">
+		<put-attribute name="file" value="/WEB-INF/view/{1}/{2}.jsp" />
+	</definition>
+</tiles-definitions>

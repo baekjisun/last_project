@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.it.saan.board.model.BoardDao">
+	<insert id="createOne" parameterType="org.it.saan.board.model.BoardDto">
+		insert into board
+		values(board_seq.nextval, #{writer}, #{title }, #{content}, sysdate )
+	</insert>
+	<select id="readOne" parameterType="java.lang.String"
+		resultType="org.it.saan.board.model.BoardDto">
+		select * from board where num=#{num}
+	</select>
+	<select id="readAll" resultType="org.it.saan.board.model.BoardDto">
+		select * from board order by num desc
+	</select>
+</mapper>

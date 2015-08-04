@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.it.saan.member.model.MemberLogDao">
+	<insert id="createOne" parameterType="java.lang.String">
+			insert into memberlog values(#{id}, null, 0)
+	</insert>
+	<update id="upLog" parameterType="java.lang.String">
+		update memberlog set lastlog=sysdate where id=#{id}
+	</update>
+	<update id="upPoint" parameterType="java.lang.String">
+		update memberlog set point=point+100 where id=#{id} and TO_CHAR(lastLog, 'yyyyMMdd') != TO_CHAR(SYSDATE, 'yyyyMMdd')
+	</update>
+</mapper>

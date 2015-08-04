@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.it.saan.member.model.MemberDao">
+	<insert id="createOne" parameterType="org.it.saan.member.model.MemberDto">
+		insert into member
+		values(#{id, jdbcType=VARCHAR}, #{pass, jdbcType=VARCHAR}, #{name,
+		jdbcType=VARCHAR}, #{gender, jdbcType=VARCHAR},#{email,
+		jdbcType=VARCHAR},#{address,jdbcType=VARCHAR})
+	</insert>
+	<select id="readOne" parameterType="java.lang.String"
+		resultType="org.it.saan.member.model.MemberDto">
+		select * from member where id=#{id}
+	</select>
+	<select id="manCnt" resultType="java.lang.Integer">
+		select count(*) from member where gender='남'
+	</select>
+	<select id="womanCnt" resultType="java.lang.Integer">
+		select count(*) from member where gender='여'
+	</select>
+</mapper>
