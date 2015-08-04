@@ -6,7 +6,7 @@
 			<ul>
 				<li><b>작성자 : </b><xsl:value-of select="writer"/></li>
 				<li><b>남긴말 : </b><xsl:value-of select="genre"/></li>
-			</ul>
+			</ul> 
 		</xsl:for-each>
 	</xsl:template>
 </xsl:stylesheet>
